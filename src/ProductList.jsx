@@ -6,13 +6,44 @@ function ProductList() {
   const [showCart, setShowCart] = useState(false);
   const [addedToCart, setAddedToCart] = useState({}); // Track added to cart plants
 
+  // Sample array of plants
   const plantsArray = [
-    // Your array of plants remains the same
+    {
+      category: "Indoor Plants",
+      plants: [
+        {
+          name: "Fiddle Leaf Fig",
+          image: "https://example.com/fiddleleaf.jpg",
+          description: "A beautiful indoor plant with large leaves.",
+          cost: "$25"
+        },
+        {
+          name: "Snake Plant",
+          image: "https://example.com/snakeplant.jpg",
+          description: "A hardy plant that requires minimal care.",
+          cost: "$15"
+        }
+      ]
+    },
+    {
+      category: "Outdoor Plants",
+      plants: [
+        {
+          name: "Rose Bush",
+          image: "https://example.com/rosebush.jpg",
+          description: "A flowering plant perfect for gardens.",
+          cost: "$30"
+        }
+      ]
+    }
   ];
 
   // Function to handle adding plants to the cart
   const handleAddToCart = (plant) => {
-    setAddedToCart({ ...addedToCart, [plant.name]: true });
+    setAddedToCart((prevState) => ({
+      ...prevState,
+      [plant.name]: true
+    }));
   };
 
   const handleCartClick = (e) => {
